@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<script>
+    var map;
+	function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom:13,
+            center: new google.maps.LatLng(24.1845553,120.6212252),
+			mapTypeId: 'roadmap'
+        });
+	  
+	var iconBase = 'https://i.imgur.com/';
+	var icons = {
+	gasStation: {
+	icon: iconBase + '0fTZmWB.png'
+	},
+	postOffice: {
+	icon: iconBase + 'Q8FPxo5.png'
+	}
+	};
+	
+	var features = [
+	{
+	position: new google.maps.LatLng(24.190501, 120.612205),//永安
+	type: 'postOffice',
+	name: '臺中永安郵局',
+	location: '永安里西屯路三段166之80號'
+	}, {
+	position: new google.maps.LatLng(24.183943, 120.604850),//榮總
+	type: 'postOffice',
+	name: '台中榮總郵局台中52支局',
+	location: '台中港路三段160號'
+	}, {
+	position: new google.maps.LatLng(24.178997, 120.601642),//東海大學
+	type: 'postOffice',
+	name: '東海大學郵局',
+	location: '台灣大道四段1727號'
+	}, {
+	position: new google.maps.LatLng(24.169471, 120.606566),//工業局
+	type: 'postOffice',
+	name: '台中工業區郵局台中46支局',
+	location: '工業區六路10號'
+	}, {
+	position: new google.maps.LatLng(24.176689, 120.637653),//西屯
+	type: 'postOffice',
+	name: '台中西屯郵局',
+	location: '黎明路三段130號'
+	}, {
+	position: new google.maps.LatLng(24.175267, 120.649131),//逢甲
+	type: 'postOffice',
+	name: '臺中逢甲郵局',
+	location: '河南路2段268號'
+	}, {
+	position: new google.maps.LatLng(24.164623, 120.654204),//台中何厝
+	type: 'postOffice',
+	name: '台中何厝郵局',
+	location: '青海路一段83號'
+	}, {
+	position: new google.maps.LatLng(24.156530, 120.652848),//大隆路
+	type: 'postOffice',
+	name: '台中大隆路郵局',
+	location: '大隆路60、62號'
+	}, {
+	position: new google.maps.LatLng(24.184295, 120.590658),//大肚山嘟嘟
+	type: 'gasStation',
+	name: '台灣中油(加盟店)-大度山嘟嘟加油站',
+	location: '台灣大道五段142號'
+	}, {
+	position: new google.maps.LatLng(24.182696, 120.601057),//台灣中油(加盟店)
+	type: 'gasStation',
+	name: '台灣中油(加盟店)',
+	location: '台灣大道四段1832號'
+	}, {
+	position: new google.maps.LatLng(24.183080, 120.614593),//台灣中油台中工業區站
+	type: 'gasStation',
+	name: '台灣中油台中工業區站',
+	location: '台灣大道四段1047號'
+	}, {
+	position: new google.maps.LatLng(24.174903, 120.604294),//台灣中油
+	type: 'gasStation',
+	name: '台灣中油',
+	location: '工業區八路2號'
+	}, {
+	position: new google.maps.LatLng(24.166166, 120.618893),//台灣中油安和加油站
+	type: 'gasStation',
+	name: '台灣中油安和加油站',
+	location: '安和路51-8號'
+	}, {
+	position: new google.maps.LatLng(24.162440, 120.628123),//台灣中油 安祥站
+	type: 'gasStation',
+	name: '台灣中油',
+	location: '環中路三段800號'
+	}, {
+	position: new google.maps.LatLng(24.161770, 120.650506),//北基加油站中港站
+	type: 'gasStation',
+	name: '北基加油站中港站',
+	location: '台灣大道二段917號'
+	}, {
+	position: new google.maps.LatLng(24.162771, 120.650092),//台灣中油文心路站
+	type: 'gasStation',
+	name: '台灣中油文心站',
+	location: '文心路三段2號'
+	}, {
+	position: new google.maps.LatLng(24.171494, 120.659807),//台灣中油文華站
+	type: 'gasStation',
+	name: '台灣中油文華站',
+	location: '文心路三段187號'
+	}, {
+	position: new google.maps.LatLng(24.173814, 120.659933),//台亞石油
+	type: 'gasStation',
+	name: '台亞石油',
+	location: '河南路二段35號'
+	}, {
+	position: new google.maps.LatLng(24.183699, 120.629835),//福懋加油站
+	type: 'gasStation',
+	name: '福懋加油站',
+	location: '西屯路三段90之28號'
+	}, {
+	position: new google.maps.LatLng(24.182356, 120.633633),//全國加油站
+	type: 'gasStation',
+	name: '全國加油站',
+	location: '西屯路三段77之3號'
+	}, {
+	position: new google.maps.LatLng(24.180126, 120.632498),//台灣中油光凰站
+	type: 'gasStation',
+	name: '台灣中油光凰站',
+	location: '福科路110號'
+	}, {
+	position: new google.maps.LatLng(24.179458, 120.634585),//台塑石油環中站
+	type: 'gasStation',
+	name: '台塑石油環中站',
+	location: '環中路二段1286號'
+	}, {
+	position: new google.maps.LatLng(24.178678, 120.634262),//西歐加油站
+	type: 'gasStation',
+	name: '西歐加油站',
+	location: '環中路二段1298號'
+	}, {
+	position: new google.maps.LatLng(24.171398, 120.643893),//台灣中油 青海站
+	type: 'gasStation',
+	name: '台灣中油 青海站',
+	location: '青海路二段211號'
+	}, {
+	position: new google.maps.LatLng(24.201556, 120.670196),//台灣中油 407臺中市西屯區環中路一段1686號
+	type: 'gasStation',
+	name: '台灣中油',
+	location: '環中路一段1686號'
+	}, {
+	position: new google.maps.LatLng(24.172063, 120.645454),//台灣中油 河南路站
+	type: 'gasStation',
+	name: '台灣中油 河南路站',
+	location: '河南路二段341號'
+	}, {
+	position: new google.maps.LatLng(24.205775, 120.629006),//台灣中油 福雅站
+	type: 'gasStation',
+	name: '台灣中油 福雅站',
+	location: '福雅路693號'
+	}, {
+	position: new google.maps.LatLng(24.201807, 120.610442),//台灣中油中科加油站
+	type: 'gasStation',
+	name: '台灣中油 中科加油站',
+	location: '東大路一段1220號'
+	}
+	];
+	
+	features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        var contentString = '<div>' +feature.name +'<br>'+'台中市西屯區'+feature.location+'</div>'
+		var infowindow = new google.maps.InfoWindow({
+		content: contentString
+		});
+		
+		marker.addListener('mouseover', function() {
+			infowindow.open(map, marker);
+			});
+		
+		marker.addListener('mouseout', function() {
+			infowindow.close(map, marker);
+			});
+		});
+	
+	}
+    </script>
+    <script async defer 
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsUuwVmq1vt8IRlyy4UByg4r9vdt9viw8&callback=initMap">
+    </script>
+  </body>
+</html>
